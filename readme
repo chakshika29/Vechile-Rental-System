@@ -1,0 +1,341 @@
+# 🚗 Vehicle Rental System
+
+A full-stack **Vehicle Rental System** that allows users to view available vehicles, add new vehicles, and calculate rental costs based on the selected vehicle and rental duration.
+
+## 🌐 Live Demo
+
+**Frontend:** https://vechile-rental-system-ten.vercel.app/
+
+**Backend API:** https://vechile-rental-system.onrender.com/
+
+## 📌 Features
+
+* 🚗 View available vehicles
+* 🏍️ Support for different vehicle types such as Cars and Bikes
+* ➕ Add new vehicles
+* 💰 Calculate rental cost based on number of days
+* 💱 Currency selection
+* 🔍 Dynamic vehicle listing
+* ⚡ REST API communication between frontend and backend
+* 🧩 Object-Oriented Programming using Vehicle, Car, and Bike classes
+* 📱 Responsive user interface
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* JavaScript (ES6+)
+* CSS
+
+### Backend
+
+* Node.js
+* Express.js
+* JavaScript
+* REST API
+
+### Deployment
+
+* Vercel — Frontend
+* Render — Backend
+
+## 🏗️ Project Architecture
+
+```text
+Vehicle-Rental-System
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── AddVehicle.jsx
+│   │   │   ├── RentCalculator.jsx
+│   │   │   └── VehicleList.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── backend/
+│   ├── models/
+│   │   ├── Vehicle.js
+│   │   ├── Car.js
+│   │   └── Bike.js
+│   │
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
+```
+
+## 🔄 How It Works
+
+The application follows a client-server architecture:
+
+```text
+                    User
+                     │
+                     ▼
+              React Frontend
+                  Vercel
+                     │
+                     │ HTTP / REST API
+                     ▼
+             Node.js + Express
+                  Render
+                     │
+                     ▼
+              Vehicle Models
+                     │
+              ┌──────┴──────┐
+              ▼             ▼
+             Car           Bike
+```
+
+### Application Flow
+
+1. The user opens the React application.
+2. React requests vehicle data from the Express backend.
+3. The backend returns the available vehicles as JSON.
+4. React stores the data using component state.
+5. Users can add vehicles through the Add Vehicle form.
+6. Users can select a vehicle and enter the number of rental days.
+7. The frontend sends the calculation request to the backend.
+8. The backend calculates the total rental cost and returns the result.
+
+## 🔌 API Endpoints
+
+### Get All Vehicles
+
+```http
+GET /api/vehicles
+```
+
+Returns all available vehicles.
+
+### Add a Vehicle
+
+```http
+POST /api/vehicles
+```
+
+Example request:
+
+```json
+{
+  "vehicleNumber": "KA01AB1234",
+  "brand": "Honda",
+  "rentalPrice": 50,
+  "type": "Bike",
+  "engineCapacity": 150
+}
+```
+
+### Calculate Rental Cost
+
+```http
+POST /api/vehicles/calculate
+```
+
+Example request:
+
+```json
+{
+  "vehicleNumber": "KA01AB1234",
+  "days": 3
+}
+```
+
+Example response:
+
+```json
+{
+  "vehicle": {
+    "vehicleNumber": "KA01AB1234",
+    "brand": "Honda"
+  },
+  "days": 3,
+  "totalRent": 150
+}
+```
+
+## 🧱 Object-Oriented Design
+
+The backend uses object-oriented programming to represent different vehicle types.
+
+```text
+Vehicle
+   │
+   ├── Car
+   │
+   └── Bike
+```
+
+### Vehicle
+
+The base class contains common vehicle properties and rental functionality.
+
+### Car
+
+Extends the `Vehicle` class and adds car-specific properties such as the number of seats.
+
+### Bike
+
+Extends the `Vehicle` class and contains bike-specific properties such as engine capacity.
+
+This demonstrates important OOP concepts including:
+
+* Encapsulation
+* Inheritance
+* Abstraction
+* Polymorphism
+
+## ⚙️ Installation and Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/chakshika29/Vechile-Rental-System.git
+```
+
+```bash
+cd Vechile-Rental-System
+```
+
+## 🚀 Frontend Setup
+
+Navigate to the frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The frontend will run on the local development server provided by Vite.
+
+## 🖥️ Backend Setup
+
+Open another terminal and navigate to the backend:
+
+```bash
+cd backend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the backend:
+
+```bash
+node server.js
+```
+
+The Express server will start on the configured port.
+
+## 📦 Dependencies
+
+### Frontend
+
+```bash
+npm install
+```
+
+Main dependencies include:
+
+* React
+* React DOM
+* Vite
+
+### Backend
+
+```bash
+npm install
+```
+
+Main dependencies include:
+
+* Express
+* CORS
+
+## 🔐 Current Data Storage
+
+The current version stores vehicle information in an **in-memory JavaScript array**.
+
+This was suitable for demonstrating the application and API functionality, but the data will not persist if the backend server restarts.
+
+### Future improvement
+
+A production version can use:
+
+* MongoDB
+* PostgreSQL
+* MySQL
+
+for persistent data storage.
+
+## 🔮 Future Improvements
+
+Some planned improvements include:
+
+* [ ] Add MongoDB/PostgreSQL database
+* [ ] Add user authentication and authorization
+* [ ] Add vehicle availability status
+* [ ] Add booking and return functionality
+* [ ] Add search and filtering
+* [ ] Add vehicle deletion and editing
+* [ ] Add payment integration
+* [ ] Add admin dashboard
+* [ ] Add automated frontend and backend testing
+* [ ] Improve API validation and error handling
+* [ ] Use environment variables for API configuration
+
+## 🧪 Testing
+
+The REST APIs can be tested using tools such as Postman.
+
+Example API flow:
+
+```text
+GET Vehicles
+      ↓
+POST New Vehicle
+      ↓
+POST Rental Calculation
+      ↓
+Display Result
+```
+
+## 👩‍💻 Author
+
+**Chakshika Pawar**
+
+GitHub: https://github.com/chakshika29
+
+LinkedIn: https://www.linkedin.com/in/chakshika-pawar/
+
+## ⭐ Project
+
+If you found this project useful, consider giving the repository a ⭐.
+
+---
+
+### 📄 License
+
+This project is created for learning and development purposes.
