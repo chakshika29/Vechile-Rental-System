@@ -3,7 +3,7 @@ import VehicleList from './components/VehicleList';
 import AddVehicle from './components/AddVehicle';
 import RentCalculator from './components/RentCalculator';
 
-const API_URL = 'http://localhost:3001/api/vehicles';
+const API_URL = 'https://vechile-rental-system.onrender.com/api/vehicles';
 
 const CURRENCIES = {
   USD: { symbol: '$', rate: 1 },
