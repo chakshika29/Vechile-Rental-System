@@ -17,7 +17,7 @@ function RentCalculator({ vehicles, currencyDetails }) {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/vehicles/calculate', {
+      const response = await fetch('https://vechile-rental-system.onrender.com/api/vehicles/calculate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ vehicleNumber, days: Number(days) })
