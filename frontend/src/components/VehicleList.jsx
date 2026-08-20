@@ -1,4 +1,7 @@
 import React from 'react';
+<div style={{ margin: "10px 0", fontWeight: "bold" }}>
+  🚗 Available Vehicles: {vehicles.filter(v => v.isAvailable).length} of {vehicles.length}
+</div>
 
 function VehicleList({ vehicles, currencyDetails }) {
   if (vehicles.length === 0) {
