@@ -11,13 +11,3 @@ class Vehicle {
     }
 }
 module.exports = Vehicle;
-
-class Truck extends Vehicle {
-  constructor(vehicleNumber, brand, rentalPrice, loadCapacity) {
-    super(vehicleNumber, brand, rentalPrice);
-    this.loadCapacity = loadCapacity;
-  }
-  calculateRent(days) {
-    return this.rentalPrice * days + (this.loadCapacity > 1000 ? 500 : 0);
-  }
-}
